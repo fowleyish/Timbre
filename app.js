@@ -1,25 +1,47 @@
-// npm packages
+// npm modules
 const dotenv = require('dotenv').config();
 const express = require('express');
 const app = express();
 
-// Define middleware
+// Database connection
+const database = process.env.SQL_DATABASE;
+const username = process.env.SQL_USERNAME;
+const password = process.env.SQL_PASSWORD;
+
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize(database, username, password, {
+    host: 'localhost',
+    port: '1433',
+    dialect: 'mssql'
+});
+
+sequelize
+    .authenticate()
+    .then(() => {
+        console.log('Connected to database', database);
+    })
+    .catch(err => {
+        console.error('Error connecting to database: ', err);
+    })
+
+// Importing routes
+const users = require('./routes/users');
+const home = require('./routes/home');
+
+// Configure view engine
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
+// Define request middleware
+app.use('/api/users', users);
+app.use('/', home);
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 // Environment variables
 const port = process.env.PORT || 3000;
-
-app.get('/', (req, res) => {
-    res.send('Testing!!!!');
-});
-
-app.get('/api/users', (req, res) => {
-    res.send([1, 2, 3, 4]);
-});
-
-app.get('/api/users/:id', (req, res) => {
-    res.send(req.params.id);
-});
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
