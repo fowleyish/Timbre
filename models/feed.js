@@ -1,6 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
-
-module.exports = (sequelize, Sequelize) => {
+module.exports = function(sequelize, Sequelize) {
     const Feed = sequelize.define('feed', {
         PostId: {
             autoIncrement: true,
@@ -10,7 +9,7 @@ module.exports = (sequelize, Sequelize) => {
         UserId: {
             type: DataTypes.INTEGER,
             references: {
-                model: User,
+                model: 'users',
                 key: 'UserId'
             }
         },
@@ -38,6 +37,9 @@ module.exports = (sequelize, Sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         }
+    }, 
+    {
+        freezeTableName: true
     });
     return Feed;
 }

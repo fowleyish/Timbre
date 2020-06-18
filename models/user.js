@@ -1,6 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
-
-module.exports = (sequelize, Sequelize) => {
+module.exports = function(sequelize, Selquelize) {
     const User = sequelize.define('user', {
         UserId: {
             autoIncrement: true,
@@ -9,7 +8,8 @@ module.exports = (sequelize, Sequelize) => {
         },
         Username: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            len: [4, 14]
         },
         Password: {
             type: DataTypes.STRING,
@@ -17,7 +17,11 @@ module.exports = (sequelize, Sequelize) => {
         },
         Email: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            unique: true,
+            validate: {
+                isEmail: true
+            }
         },
         SpotifyToken: {
             type: DataTypes.STRING,
@@ -38,27 +42,45 @@ module.exports = (sequelize, Sequelize) => {
         },
         SpotifyProfUrl: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
+            validate: {
+                isUrl: true
+            }
         },
         FacebookProfUrl: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
+            validate: {
+                isUrl: true
+            }
         },
         TwitterProfUrl: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
+            validate: {
+                isUrl: true
+            }
         },
         InstaProfUrl: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
+            validate: {
+                isUrl: true
+            }
         },
         SoundcloudProfUrl: {
             type: DataTypes.STRING,
-            allowNull: true
+            allowNull: true,
+            validate: {
+                isUrl: true
+            }
         },
         ProfileBlurb: {
             type: DataTypes.STRING(500),
-            allowNull: true
+            allowNull: true,
+            validate: {
+                len: [1, 500]
+            }
         },
         Following: {
             type: DataTypes.STRING(3000)

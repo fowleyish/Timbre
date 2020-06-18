@@ -10,20 +10,13 @@ const password = process.env.SQL_PASSWORD;
 
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize(database, username, password, {
-    host: 'localhost',
-    port: '1433',
-    dialect: 'mssql'
-});
-
-sequelize
-    .authenticate()
-    .then(() => {
-        console.log('Connected to database', database);
-    })
-    .catch(err => {
-        console.error('Error connecting to database: ', err);
-    })
+const models = require('./models/index');
+try {
+    models.sequelize.sync();
+    console.log('Database is synced!');
+} catch (e) {
+    console.log('Migraton error: ', e);
+}
 
 // Importing routes
 const users = require('./routes/users');
