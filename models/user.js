@@ -8,17 +8,13 @@ module.exports = function(sequelize, Selquelize) {
         },
         Username: {
             type: DataTypes.STRING,
-            allowNull: false,
             len: [4, 14]
         },
         Password: {
-            type: DataTypes.STRING,
-            allowNull: false
+            type: DataTypes.STRING
         },
         Email: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: true,
             validate: {
                 isEmail: true
             }
