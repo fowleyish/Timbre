@@ -85,4 +85,24 @@ router.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
+router.post('/edit', (req, res) => {
+    const profileInfo = {
+        City: req.body.city,
+        StateProv: req.body.state,
+        Country: req.body.country,
+        SpotifyProfUrl: req.body.spotifyUrl,
+        FacebookProfUrl: req.body.facebook,
+        TwitterProfUrl: req.body.twitter,
+        InstaProfUrl: req.body.instagram,
+        SoundcloudProfUrl: req.body.soundcloud,
+        ProfileBlurb: req.body.about,
+        Avatar: req.body.avatar
+    };
+    User.update(profileInfo, { where: { UserId: req.user.UserId } })
+    .then(user => {
+        res.redirect('/dashboard');
+    })
+    .catch(err => console.log(err));
+});
+
 module.exports = router;

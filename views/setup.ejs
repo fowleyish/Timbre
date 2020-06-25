@@ -1,0 +1,115 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+        <h1 class="text-center mb-3">Welcome, <%= user.Username %>!</h1>
+        <h3>Please fill out the following fields to continue. </h3>
+        <%- include('./partials/messages') %>
+        <form action="/users/edit" method="POST">
+            <div class="form-group">
+            <label for="email">City</label>
+            <input
+                type="text"
+                id="city"
+                name="city"
+                class="form-control"
+                placeholder="Enter your city"
+            >
+            </div>
+            <div class="form-group">
+            <label for="password">State</label>
+            <input
+                type="text"
+                id="state"
+                name="state"
+                class="form-control"
+                placeholder="Enter your state or province"
+            >
+            </div>
+            <div class="form-group">
+                <label for="password">Country</label>
+                <input
+                    type="text"
+                    id="country"
+                    name="country"
+                    class="form-control"
+                    placeholder="Enter your country of residence"
+                >
+            </div>
+            <h4> Find me on... </h4>
+            <div class="form-group">
+                <label for="password">Spotify profile</label>
+                <input
+                    type="text"
+                    id="spotifyUrl"
+                    name="spotifyUrl"
+                    class="form-control"
+                    placeholder="Enter your Spotify profile URL"
+                >
+            </div>
+            <div class="form-group">
+                <label for="password">Facebook profile</label>
+                <input
+                    type="text"
+                    id="facebook"
+                    name="facebook"
+                    class="form-control"
+                    placeholder="Enter your Facebook profile URL"
+                >
+            </div>
+            <div class="form-group">
+                <label for="password">Twitter profile</label>
+                <input
+                    type="text"
+                    id="twitter"
+                    name="twitter"
+                    class="form-control"
+                    placeholder="Enter your Twitter profile URL"
+                >
+            </div>
+            <div class="form-group">
+                <label for="password">Instagram profile</label>
+                <input
+                    type="text"
+                    id="instagram"
+                    name="instagram"
+                    class="form-control"
+                    placeholder="Enter your Instagram profile URL"
+                >
+            </div>
+            <div class="form-group">
+                <label for="password">Soundcloud profile</label>
+                <input
+                    type="text"
+                    id="soundcloud"
+                    name="soundcloud"
+                    class="form-control"
+                    placeholder="Enter your Soundcloud profile URL"
+                >
+            </div>
+            <h4>About me</h4>
+            <div class="form-group">
+                <label for="password">Max: 500 characters</label>
+                <input
+                    type="text"
+                    id="about"
+                    name="about"
+                    class="form-control"
+                    placeholder="Tell us about you!"
+                >
+            </div>
+            <div class="form-group">
+                <label for="password">Profile picture</label>
+                <input
+                    type="text"
+                    id="avatar"
+                    name="avatar"
+                    class="form-control"
+                    placeholder="Enter a URL to a profile picture"
+                >
+            </div>
+            <p>Fields denoted with an asterisk (*) are required.</p>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        </div>
+    </div>
+</div>

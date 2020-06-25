@@ -54,6 +54,7 @@ app.use((req, res, next) => {
 // Importing routes
 app.use('/users', require('./routes/users.js'));
 app.use('/', require('./routes/home.js'));
+app.use('/dashboard', require('./routes/dashboard.js'));
 
 // Environment variables
 const port = process.env.PORT || 3000;
