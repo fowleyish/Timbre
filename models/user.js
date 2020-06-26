@@ -80,6 +80,9 @@ module.exports = function(sequelize, Selquelize) {
         },
         Following: {
             type: DataTypes.STRING(3000)
+        },
+        SpotifyAuthUrl: {
+            type: DataTypes.STRING(500)
         }
     });
     return User;

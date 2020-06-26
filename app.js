@@ -14,7 +14,7 @@ require('./config/passport')(passport);
 const models = require('./models/index');
 
 // Sync models to DB
-models.sequelize.sync().then(() => {
+models.sequelize.sync({ force: true }).then(() => {
     console.log('Synced to database!');
 }).catch((e) => {
     console.log('Error syncing to database: ', e);

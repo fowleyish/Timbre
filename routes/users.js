@@ -3,6 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const User = require('../models/index').user;
+const SpotifyWebApi = require('spotify-web-api-node');
 
 // Route to register page
 router.get('/register', (req, res) => {
@@ -85,7 +86,22 @@ router.get('/logout', (req, res) => {
     res.redirect('/');
 });
 
+// PUT: Edit profile, first time setup
+
 router.post('/edit', (req, res) => {
+    const scopes = ['playlist-read-private', 'user-read-recently-played', 'user-top-read', 'user-read-currently-playing', 'user-read-private', 'streaming'];
+    const redirectUri = process.env.SPOTIFY_REDIRECT_URI;
+    const clientId = process.env.SPOTIFY_CLIENTID;
+    const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
+
+    const spotifyApi = new SpotifyWebApi({
+        redirectUri: redirectUri,
+        clientId: clientId,
+        clientSecret: clientSecret
+    });
+
+    const authorizeUrl = spotifyApi.createAuthorizeURL(scopes);
+
     const profileInfo = {
         City: req.body.city,
         StateProv: req.body.state,
@@ -96,13 +112,23 @@ router.post('/edit', (req, res) => {
         InstaProfUrl: req.body.instagram,
         SoundcloudProfUrl: req.body.soundcloud,
         ProfileBlurb: req.body.about,
-        Avatar: req.body.avatar
+        Avatar: req.body.avatar,
+        SpotifyAuthUrl: authorizeUrl
     };
     User.update(profileInfo, { where: { UserId: req.user.UserId } })
     .then(user => {
-        res.redirect('/dashboard');
+        console.log('hi!');
     })
     .catch(err => console.log(err));
+
+    res.redirect('/authServices');
+});
+
+// GET: Start authorization services
+router.get('/authServices', (req, res) => {
+    res.render('authServices', {
+        user: req.user
+    });
 });
 
 module.exports = router;

@@ -3,7 +3,7 @@ const router = express.Router();
 const { ensureAuth } = require('../config/auth');
 
 router.get('/', ensureAuth, (req, res) => {
-    if (req.user.SpotifyToken == null) {
+    if (req.user.SpotifyAuthUrl == null) {
         res.render('setup', {
             user: req.user
         })
