@@ -88,7 +88,7 @@ router.get('/logout', (req, res) => {
 
 // PUT: Edit profile, first time setup
 
-router.get('/edit', (req, res) => {
+router.post('/edit', (req, res) => {
     const profileInfo = {
         City: req.body.city,
         StateProv: req.body.state,
@@ -107,7 +107,7 @@ router.get('/edit', (req, res) => {
     })
     .catch(err => console.log(err));
 
-    res.redirect('./authServices');
+    res.redirect('/dashboard');
 });
 
 module.exports = router;

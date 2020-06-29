@@ -3,7 +3,7 @@ const router = express.Router();
 const { ensureAuth } = require('../config/auth');
 
 router.get('/', ensureAuth, (req, res) => {
-    if (req.user.SpotifyAuthUrl == null) {
+    if (req.user.SpotifyRefreshToken == null) {
         console.log(spotAuthUrl);
         res.render('setup', {
             user: req.user,

@@ -23,6 +23,10 @@ module.exports = function(sequelize, Selquelize) {
             type: DataTypes.STRING,
             allowNull: true
         },
+        SpotifyRefreshToken: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         City: {
             type: DataTypes.STRING
         },
@@ -80,9 +84,6 @@ module.exports = function(sequelize, Selquelize) {
         },
         Following: {
             type: DataTypes.STRING(3000)
-        },
-        SpotifyAuthUrl: {
-            type: DataTypes.STRING(500)
         }
     });
     return User;

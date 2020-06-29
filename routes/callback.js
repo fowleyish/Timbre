@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const User = require('../models/index').user;
 
 router.get('/', async (req, res) => {
   const { code } = req.query;
@@ -9,7 +10,15 @@ router.get('/', async (req, res) => {
     const { access_token, refresh_token } = data.body;
     spotifyApi.setAccessToken(access_token);
     spotifyApi.setRefreshToken(refresh_token);
-    res.redirect('http://localhost:3000/dashboard');
+    const spotifyTokens = {
+        SpotifyToken: access_token,
+        SpotifyRefreshToken: refresh_token
+    };
+    User.update(spotifyTokens, { where: { UserId: req.user.UserId } })
+    .then(user => {
+        console.log('Spotify tokens set!');
+    })
+    .catch(err => console.log(err));
   } catch (e) {
       console.log(e);
   }
