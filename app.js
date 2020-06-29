@@ -51,10 +51,21 @@ app.use((req, res, next) => {
     next();
 });
 
+// Spotify config
+const SpotifyWebApi = require('spotify-web-api-node');
+global.spotifyApi = new SpotifyWebApi({
+    clientId: process.env.SPOTIFY_CLIENTID,
+    clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+    redirectUri: process.env.SPOTIFY_REDIRECT_URI
+});
+const scopes = ['playlist-read-private', 'user-read-recently-played', 'user-top-read', 'user-read-currently-playing', 'user-read-private', 'streaming'];
+global.spotAuthUrl = spotifyApi.createAuthorizeURL(scopes);
+
 // Importing routes
 app.use('/users', require('./routes/users.js'));
 app.use('/', require('./routes/home.js'));
 app.use('/dashboard', require('./routes/dashboard.js'));
+app.use('/callback', require('./routes/callback.js'));
 
 // Environment variables
 const port = process.env.PORT || 3000;

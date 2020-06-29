@@ -88,20 +88,7 @@ router.get('/logout', (req, res) => {
 
 // PUT: Edit profile, first time setup
 
-router.post('/edit', (req, res) => {
-    const scopes = ['playlist-read-private', 'user-read-recently-played', 'user-top-read', 'user-read-currently-playing', 'user-read-private', 'streaming'];
-    const redirectUri = process.env.SPOTIFY_REDIRECT_URI;
-    const clientId = process.env.SPOTIFY_CLIENTID;
-    const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
-
-    const spotifyApi = new SpotifyWebApi({
-        redirectUri: redirectUri,
-        clientId: clientId,
-        clientSecret: clientSecret
-    });
-
-    const authorizeUrl = spotifyApi.createAuthorizeURL(scopes);
-
+router.get('/edit', (req, res) => {
     const profileInfo = {
         City: req.body.city,
         StateProv: req.body.state,
@@ -112,23 +99,15 @@ router.post('/edit', (req, res) => {
         InstaProfUrl: req.body.instagram,
         SoundcloudProfUrl: req.body.soundcloud,
         ProfileBlurb: req.body.about,
-        Avatar: req.body.avatar,
-        SpotifyAuthUrl: authorizeUrl
+        Avatar: req.body.avatar
     };
     User.update(profileInfo, { where: { UserId: req.user.UserId } })
     .then(user => {
-        console.log('hi!');
+        console.log('User updated!');
     })
     .catch(err => console.log(err));
 
-    res.redirect('/authServices');
-});
-
-// GET: Start authorization services
-router.get('/authServices', (req, res) => {
-    res.render('authServices', {
-        user: req.user
-    });
+    res.redirect('./authServices');
 });
 
 module.exports = router;

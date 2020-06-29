@@ -4,8 +4,10 @@ const { ensureAuth } = require('../config/auth');
 
 router.get('/', ensureAuth, (req, res) => {
     if (req.user.SpotifyAuthUrl == null) {
+        console.log(spotAuthUrl);
         res.render('setup', {
-            user: req.user
+            user: req.user,
+            spotAuth: spotAuthUrl
         })
     } else {
         res.render('dashboard', {
