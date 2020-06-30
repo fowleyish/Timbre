@@ -6,4 +6,11 @@
 <h1><%= user.Username %></h1>
 <h1><%= user.Username %></h1>
 <h1><%= user.Username %></h1>
-<h1><%= user.Username %></h1>
+<h1><%= user.Username %></h1> 
+<%- spotifyApi.getArtist('2hazSY4Ef3aB9ATXW7F5w3')
+  .then(function(data) {
+    console.log('Artist information', data.body);
+    }, function(err) {
+    console.error(err);
+  });
+%>

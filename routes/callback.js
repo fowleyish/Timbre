@@ -22,6 +22,8 @@ router.get('/', async (req, res) => {
   } catch (e) {
       console.log(e);
   }
+
+  res.redirect('/dashboard');
 });
 
 module.exports = router;

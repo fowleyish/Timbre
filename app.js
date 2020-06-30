@@ -14,7 +14,7 @@ require('./config/passport')(passport);
 const models = require('./models/index');
 
 // Sync models to DB
-models.sequelize.sync({ force: true }).then(() => {
+models.sequelize.sync().then(() => {
     console.log('Synced to database!');
 }).catch((e) => {
     console.log('Error syncing to database: ', e);
@@ -65,6 +65,7 @@ global.spotAuthUrl = spotifyApi.createAuthorizeURL(scopes);
 app.use('/users', require('./routes/users.js'));
 app.use('/', require('./routes/home.js'));
 app.use('/dashboard', require('./routes/dashboard.js'));
+app.use('/spotifyauth', require('./routes/spotifyauth.js'));
 app.use('/callback', require('./routes/callback.js'));
 
 // Environment variables

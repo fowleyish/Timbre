@@ -107,7 +107,7 @@ router.post('/edit', (req, res) => {
     })
     .catch(err => console.log(err));
 
-    res.redirect('/dashboard');
+    res.redirect('/spotifyauth');
 });
 
 module.exports = router;
