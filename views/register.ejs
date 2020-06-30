@@ -1,46 +1,58 @@
-<div class="row mt-5">
-    <div class="col-md-6 m-auto">
-      <div class="card card-body">
-        <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Register</h1>
-        <%- include('./partials/messages') %>
-        <form action="/users/register" method="POST">
-          <div class="form-group">
-            <label for="username">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              class="form-control"
-              placeholder="Enter your email"
-              value="<%= typeof email != 'undefined' ? email : '' %>"
-            >
-          </div>
-            <label for="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              class="form-control"
-              placeholder="Select a username"
-              value="<%= typeof username != 'undefined' ? username : '' %>"
-            >
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              class="form-control"
-              placeholder="Create a password"
-              value="<%= typeof password != 'undefined' ? password : '' %>"
-            >
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">Register</button>
-        </form>
-        <p class="lead mt-4">
-          Already registered? <a href="/users/login">Login</a>
-        </p>
-      </div>
-    </div>
+<div id="loginRegContainer">
+  <div class="loginRegHeader">
+    <h1 class="loginRegTitle">Register &nbsp</h1>
+    <span><img src="../images/timbreIcon.PNG" alt="Timbre icon" id="timbreIconLoginReg" /></span>
   </div>
+  <%- include('./partials/messages') %>
+    <form action="/users/register" method="POST">
+      <div class="inputSection">
+        <div class="inputLabel">
+          <label for="username">Email</label>
+        </div>
+        <div class="inputInput">
+          <input
+          type="email"
+          id="email"
+          name="email"
+          class="timbreInputBox"
+          placeholder="Enter your email"
+          value="<%= typeof email != 'undefined' ? email : '' %>"
+        >
+        </div>
+      </div>
+      <div class="inputSection">
+        <div class="inputLabel">
+          <label for="username">Username</label>
+        </div>
+        <div class="inputInput">
+          <input
+          type="text"
+          id="username"
+          name="username"
+          class="timbreInputBox"
+          placeholder="Select a username"
+          value="<%= typeof username != 'undefined' ? username : '' %>"
+        >
+        </div>
+      </div>
+      <div class="inputSection">
+        <div class="inputLabel">
+          <label for="password">Password</label>
+        </div>
+        <div class="inputInput">
+          <input
+          type="password"
+          id="password"
+          name="password"
+          class="timbreInputBox"
+          placeholder="Create a password"
+          value="<%= typeof password != 'undefined' ? password : '' %>"
+        >
+        </div>
+      </div>
+      <button type="submit" class="timbreButton timbreButtonOverride loginRegButton">Register</button>
+    </form>
+    <p>
+      Already registered? <a href="/users/login" class="timbreSimpleLink">Login</a>
+    </p>
+</div>
