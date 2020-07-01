@@ -88,6 +88,25 @@ body {
     color: #ff2ca3;
 }
 
+/* Scrollbar styles */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: white;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d3d3d3;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: darkgray;
+}
+
 /* Homepage styles */
 
 .homeButton {
@@ -114,6 +133,7 @@ body {
 
 .loginRegButton {
     margin-top: 20px;
+    width: 100%;
 }
 
 .inputLabel {
@@ -130,7 +150,7 @@ body {
 }
 
 .inputSection {
-    width: 40%;
+    width: 100%;
 }
 
 .timbreInputBox:focus {
@@ -155,4 +175,57 @@ body {
 
 .loginRegHeader span {
     padding-top: 8px;
+}
+
+#loginRegContainer form {
+    width: 40%;
+}
+
+/* First time setup styles */
+
+#setupContainer {
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+#setupContainer form {
+    width: 50%;
+}
+
+/* Dashboard styles */
+
+#dashboardContent {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#peopleContainer, #artistsContainer, #feedContainer {
+    overflow-y: scroll;
+}
+
+#col1 {
+    width: 40%;
+    text-align: left;
+}
+
+#col2 {
+    width: 58%;
+    text-align: left;
+}
+
+#peopleContainer {
+    height: 35vh;
+}
+
+#artistsContainer {
+    height: 35vh;
+}
+
+#dashboardContent h2 {
+    font-weight: 400;
 }

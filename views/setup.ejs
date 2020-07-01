@@ -1,115 +1,152 @@
-<div class="row mt-5">
-    <div class="col-md-6 m-auto">
-        <div class="card card-body">
+<div id="setupContainer">
+    <div class="setupHeader">
         <h1 class="text-center mb-3">Welcome, <%= user.Username %>!</h1>
-        <h3>Please fill out the following fields to continue. </h3>
-        <%- include('./partials/messages') %>
-        <form action="/users/edit" method="POST">
-            <div class="form-group">
-            <label for="city">City</label>
-            <input
-                type="text"
-                id="city"
-                name="city"
-                class="form-control"
-                placeholder="Enter your city"
-            >
+        <h3>Please fill out the following fields to continue </h3>
+    </div>
+    <%- include('./partials/messages') %>
+    <form action="/users/edit" method="POST">
+        <div class="inputSection">
+            <div class="inputLabel">
+                <label for="city">City</label>
             </div>
-            <div class="form-group">
-            <label for="state">State</label>
-            <input
-                type="text"
-                id="state"
-                name="state"
-                class="form-control"
-                placeholder="Enter your state or province"
-            >
+            <div class="inputInput">
+                <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    class="timbreInputBox"
+                    placeholder="Enter your city"
+                >
             </div>
-            <div class="form-group">
+        </div>
+        <div class="inputSection">
+            <div class="inputLabel">
+                <label for="state">State</label>
+            </div>
+            <div class="inputInput">
+                <input
+                    type="text"
+                    id="state"
+                    name="state"
+                    class="timbreInputBox"
+                    placeholder="Enter your state or province"
+                >
+            </div>
+        </div>
+        <div class="inputSection">
+            <div class="inputLabel">
                 <label for="country">Country</label> 
+            </div>
+            <div class="inputInput">
                 <input
                     type="text"
                     id="country"
                     name="country"
-                    class="form-control"
+                    class="timbreInputBox"
                     placeholder="Enter your country of residence"
                 >
             </div>
-            <h4> Find me on... </h4>
-            <div class="form-group">
-                <label for="spotifyUrl">Spotify profile</label>
+        </div>
+        <h4> Find me on... </h4>
+        <div class="inputSection">
+            <div class="inputLabel">
+                <label for="spotifyUrl">Spotify</label>
+            </div>
+            <div class="inputInput">
                 <input
                     type="text"
                     id="spotifyUrl"
                     name="spotifyUrl"
-                    class="form-control"
+                    class="timbreInputBox"
                     placeholder="Enter your Spotify profile URL"
                 >
             </div>
-            <div class="form-group">
-                <label for="facebook">Facebook profile</label>
+        </div>
+        <div class="inputSection">
+            <div class="inputLabel">
+                <label for="facebook">Facebook</label>
+            </div>
+            <div class="inputInput">
                 <input
                     type="text"
                     id="facebook"
                     name="facebook"
-                    class="form-control"
+                    class="timbreInputBox"
                     placeholder="Enter your Facebook profile URL"
                 >
             </div>
-            <div class="form-group">
-                <label for="twitter">Twitter profile</label>
+        </div>
+        <div class="inputSection">
+            <div class="inputLabel">
+                <label for="twitter">Twitter</label>
+            </div>
+            <div class="inputInput">
                 <input
                     type="text"
                     id="twitter"
                     name="twitter"
-                    class="form-control"
+                    class="timbreInputBox"
                     placeholder="Enter your Twitter profile URL"
                 >
             </div>
-            <div class="form-group">
+        </div>
+        <div class="inputSection">
+            <div class="inputLabel">
                 <label for="instagram">Instagram profile</label>
+            </div>
+            <div class="inputInput">
                 <input
                     type="text"
                     id="instagram"
                     name="instagram"
-                    class="form-control"
+                    class="timbreInputBox"
                     placeholder="Enter your Instagram profile URL"
                 >
             </div>
-            <div class="form-group">
+        </div>
+        <div class="inputSection">
+            <div class="inputLabel">
                 <label for="soundcloud">Soundcloud profile</label>
+            </div>
+            <div class="inputInput">
                 <input
                     type="text"
                     id="soundcloud"
                     name="soundcloud"
-                    class="form-control"
+                    class="timbreInputBox"
                     placeholder="Enter your Soundcloud profile URL"
                 >
             </div>
-            <h4>About me</h4>
-            <div class="form-group">
+        </div>
+        <h4>About me</h4>
+        <div class="inputSection">
+            <div class="inputLabel">
                 <label for="about">Max: 500 characters</label>
+            </div>
+            <div class="inputInput">
                 <input
                     type="text"
                     id="about"
                     name="about"
-                    class="form-control"
+                    class="timbreInputBox"
                     placeholder="Tell us about you!"
                 >
             </div>
-            <div class="form-group">
+        </div>
+        <div class="inputSection">
+            <div class="inputLabel">
                 <label for="avatar">Profile picture</label>
+            </div>
+            <div class="inputInput">
                 <input
                     type="text"
                     id="avatar"
                     name="avatar"
-                    class="form-control"
+                    class="timbreInputBox"
                     placeholder="Enter a URL to a profile picture"
                 >
             </div>
-            <p>Fields denoted with an asterisk (*) are required.</p>
-            <button type="submit" class="btn btn-primary btn-block">Update profile</button>
-        </form>
         </div>
-    </div>
+        <button type="submit" class="timbreButton timbreButtonOverride loginRegButton">Update profile</button>
+    </form>
 </div>

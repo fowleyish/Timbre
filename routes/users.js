@@ -83,7 +83,7 @@ router.post('/login', (req, res, next) => {
 router.get('/logout', (req, res) => {
     req.logout();
     req.flash('success_message', 'You have logged out');
-    res.redirect('/');
+    res.redirect('/users/login');
 });
 
 // PUT: Edit profile, first time setup

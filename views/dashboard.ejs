@@ -1,16 +1,18 @@
-<h1><%= user.Username %></h1>
-<h1><%= user.Email %></h1>
-<h1><%= user.SpotifyToken %></h1>
-<h1><%= user.SpotifyRefreshToken %></h1>
-<h1><%= user.Username %></h1>
-<h1><%= user.Username %></h1>
-<h1><%= user.Username %></h1>
-<h1><%= user.Username %></h1>
-<h1><%= user.Username %></h1> 
-<%- spotifyApi.getArtist('2hazSY4Ef3aB9ATXW7F5w3')
-  .then(function(data) {
-    console.log('Artist information', data.body);
-    }, function(err) {
-    console.error(err);
-  });
-%>
+<div id="dashboardContent">
+  <div id="col1">
+    <h2>Discover People</h2>
+    <div id="peopleContainer">
+
+    </div>
+    <h2>Discover Artists</h2>
+    <div id="artistsContainer">
+
+    </div>
+  </div>
+  <div id="col2">
+    <h2>Feed</h2>
+    <div id="feedContainer">
+
+    </div>
+  </div>
+</div>
