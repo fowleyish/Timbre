@@ -105,9 +105,8 @@ router.post('/edit', (req, res) => {
     .then(user => {
         console.log('User updated!');
     })
+    .then(user => res.redirect('/spotifyauth'))
     .catch(err => console.log(err));
-
-    res.redirect('/spotifyauth');
 });
 
 module.exports = router;

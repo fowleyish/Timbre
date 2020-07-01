@@ -65,6 +65,7 @@ global.spotAuthUrl = spotifyApi.createAuthorizeURL(scopes);
 app.use('/users', require('./routes/users.js'));
 app.use('/', require('./routes/home.js'));
 app.use('/dashboard', require('./routes/dashboard.js'));
+app.use('/profile', require('./routes/profile.js'));
 app.use('/spotifyauth', require('./routes/spotifyauth.js'));
 app.use('/callback', require('./routes/callback.js'));
 

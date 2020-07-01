@@ -1,35 +1,64 @@
 <div id="aboutInfo">
     <div id="profileAvatar">
-
+        <% if (user.Avatar != null) { %>
+            <img src="<%= user.Avatar %>" alt="User's profile image" />
+        <% } else { %>
+            <img src="../icons/user.png" alt="User's profile image is not set" />
+        <% } %>
     </div>
     <div id="profileText">
         <div id="profileTopfold">
             <div id="nameAndLocation">
-        
+                <h1><%= user.Username %></h1>
+                <p>
+                    <%= user.City %>, 
+                    <span> <%= user.State %> </span>
+                    <span> <%= user.Country %> </span>
+                </p>
             </div>
             <div id="profileInteractBtn">
-
+                <a href="users/editProfile" class="timbreButton timbreButtonOverride loginRegButton">Edit Profile</a>
             </div>
         </div>
         <div id="profileBio">
-
+            <p> <%= user.ProfileBlurb %> </p>
         </div>
         <div id="findMeOn">
-            <div id="profSpotifyLink">
-
-            </div>
-            <div id="profFacebookLink">
-
-            </div>
-            <div id="profTwitterLink">
-
-            </div>
-            <div id="profInstaLink">
-
-            </div>
-            <div id="profSoundcloudLink">
-
-            </div>
+            <% if (user.SpotifyProfUrl != null) { %>
+                <div id="profSpotifyLink">
+                    <a href=" <%- user.SpotifyProfUrl %>" target="_blank">
+                        <img src="../icons/spotify.png" class="socialIcon">
+                    </a>
+                </div>
+            <% } %>
+            <% if (user.FacebookProfUrl != null) { %>
+                <div id="profFacebookLink">
+                    <a href=" <%- user.FacebookProfUrl %>" target="_blank">
+                        <img src="../icons/facebook.png" class="socialIcon">
+                    </a>
+                </div>
+            <% } %>
+            <% if (user.TwitterProfUrl != null) { %>
+                <div id="profTwitterLink">
+                    <a href=" <%- user.TwitterProfUrl %>" target="_blank">
+                        <img src="../icons/twitter.png" class="socialIcon">
+                    </a>
+                </div>
+            <% } %>
+            <% if (user.InstaProfUrl != null) { %>
+                <div id="profInstaLink">
+                    <a href=" <%- user.InstaProfUrl %>" target="_blank">
+                        <img src="../icons/instagram.png" class="socialIcon">
+                    </a>
+                </div>
+            <% } %>
+            <% if (user.InstaProfUrl != null) { %>
+                <div id="profSoundcloudLink">
+                    <a href=" <%- user.SoundcloudProfUrl %>" target="_blank">
+                        <img src="../icons/soundcloud.png" class="socialIcon">
+                    </a>
+                </div>
+            <% } %>
         </div>
     </div>
 </div>
@@ -42,7 +71,7 @@
     </div>
     <div id="mutualInterestsTab">
         <div id="mutualInterestsContainer">
-            
+
         </div>
     </div>
 </div>
