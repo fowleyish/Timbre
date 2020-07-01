@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const { ensureAuth } = require('../config/auth');
 
-router.get('/', ensureAuth, (req, res) => {
+router.get('/:id', ensureAuth, (req, res) => {
     res.render('profile', {
-        user: req.user
+        user: req.user,
+        id: id
     });
 });
 

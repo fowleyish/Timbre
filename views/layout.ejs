@@ -9,13 +9,30 @@
     <title>Timbre</title>
   </head>
   <body>
+    <% if (typeof req != 'undefined') { 
+        if (typeof req.user != 'undefined') {
+          const user = req.user; 
+          console.log(user);
+        } 
+       }
+    %>
     <div class="nav">
       <div id="leftNavItems">
-        <a href="/users/login" class="navLink">Login</a>
-        <a href="/users/register" class="navLink">Register</a>
-        <a href="/dashboard" class="navLink">Dashboard</a>
-        <a href="/profile" class="navLink">My profile</a>
-        <a href="/users/logout" class="navLink">Logout</a>
+        <% if (typeof user == 'undefined') { %>
+          <a href="/users/login" class="navLink">Login</a>
+        <% } %>
+        <% if (typeof user == 'undefined') { %>
+          <a href="/users/register" class="navLink">Register</a>
+        <% } %>
+        <% if (typeof user != 'undefined') { %>
+          <a href="/dashboard" class="navLink">Dashboard</a>
+        <% } %>
+        <% if (typeof user != 'undefined') { %>
+          <a href="/profile/<%=user.UserId%>" class="navLink">My profile</a>
+        <% } %>
+        <% if (typeof user != 'undefined') { %>
+          <a href="/users/logout" class="navLink">Logout</a>
+        <% } %>
       </div>
       <div id="centerNavItems">
         <img src="../images/timbreHeaderLogo.PNG" alt="Timbre logo in header" id="timbreHeaderLogo" />
