@@ -1,7 +1,7 @@
 <div id="aboutInfo">
     <div id="profileAvatar">
-        <% if (user.Avatar != null) { %>
-            <img src="<%= user.Avatar %>" alt="User's profile image" />
+        <% if (thisUser.Avatar != null) { %>
+            <img src="<%= thisUser.Avatar %>" alt="User's profile image" />
         <% } else { %>
             <img src="../icons/user.png" alt="User's profile image is not set" />
         <% } %>
@@ -9,52 +9,56 @@
     <div id="profileText">
         <div id="profileTopfold">
             <div id="nameAndLocation">
-                <h1><%= user.Username %></h1>
+                <h1><%= thisUser.Username %></h1>
                 <p>
-                    <%= user.City%>, 
-                    <span> <%= user.StateProv %> </span>
-                    <span> <%= user.Country %> </span>
+                    <%= thisUser.City%>, 
+                    <span> <%= thisUser.StateProv %> </span>
+                    <span> <%= thisUser.Country %> </span>
                 </p>
             </div>
             <div id="profileInteractBtn">
-                <a href="users/editProfile" class="timbreButton profileButton">Edit Profile</a>
+                <% if (thisUser.UserId === user.UserId) { %>
+                    <a href="users/editProfile" class="timbreButton profileButton">Edit Profile</a>
+                <% } else { %>
+                    <a href="users/editProfile" class="timbreButton profileButton">Follow</a>
+                <% } %>
             </div>
         </div>
         <div id="profileBio">
-            <p> <%= user.ProfileBlurb %> </p>
+            <p> <%= thisUser.ProfileBlurb %> </p>
         </div>
         <div id="findMeOn">
-            <% if (user.SpotifyProfUrl != null) { %>
+            <% if (thisUser.SpotifyProfUrl != null) { %>
                 <div id="profSpotifyLink" class="socialIconContainer">
-                    <a href=" <%- user.SpotifyProfUrl %>" target="_blank">
+                    <a href=" <%- thisUser.SpotifyProfUrl %>" target="_blank">
                         <img src="../icons/spotify.png" class="socialIcon">
                     </a>
                 </div>
             <% } %>
-            <% if (user.FacebookProfUrl != null) { %>
+            <% if (thisUser.FacebookProfUrl != null) { %>
                 <div id="profFacebookLink" class="socialIconContainer">
-                    <a href=" <%- user.FacebookProfUrl %>" target="_blank">
+                    <a href=" <%- thisUser.FacebookProfUrl %>" target="_blank">
                         <img src="../icons/facebook.png" class="socialIcon">
                     </a>
                 </div>
             <% } %>
-            <% if (user.TwitterProfUrl != null) { %>
+            <% if (thisUser.TwitterProfUrl != null) { %>
                 <div id="profTwitterLink" class="socialIconContainer">
-                    <a href=" <%- user.TwitterProfUrl %>" target="_blank">
+                    <a href=" <%- thisUser.TwitterProfUrl %>" target="_blank">
                         <img src="../icons/twitter.png" class="socialIcon">
                     </a>
                 </div>
             <% } %>
-            <% if (user.InstaProfUrl != null) { %>
+            <% if (thisUser.InstaProfUrl != null) { %>
                 <div id="profInstaLink" class="socialIconContainer">
-                    <a href=" <%- user.InstaProfUrl %>" target="_blank">
+                    <a href=" <%- thisUser.InstaProfUrl %>" target="_blank">
                         <img src="../icons/instagram.png" class="socialIcon">
                     </a>
                 </div>
             <% } %>
-            <% if (user.InstaProfUrl != null) { %>
+            <% if (thisUser.InstaProfUrl != null) { %>
                 <div id="profSoundcloudLink" class="socialIconContainer">
-                    <a href=" <%- user.SoundcloudProfUrl %>" target="_blank">
+                    <a href=" <%- thisUser.SoundcloudProfUrl %>" target="_blank">
                         <img src="../icons/soundcloud.png" class="socialIcon">
                     </a>
                 </div>

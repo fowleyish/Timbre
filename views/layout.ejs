@@ -12,7 +12,6 @@
     <% if (typeof req != 'undefined') { 
         if (typeof req.user != 'undefined') {
           const user = req.user; 
-          console.log(user);
         } 
        }
     %>
@@ -38,7 +37,10 @@
         <img src="../images/timbreHeaderLogo.PNG" alt="Timbre logo in header" id="timbreHeaderLogo" />
       </div>
       <div id="endNavItems">
-        <!-- TODO: Add logic for user image, or load nothing -->
+        <% if (typeof user != 'undefined') { %>
+          <h3 id="usernameInNav"><%= user.Username %></h3>
+          <img src="<%=user.Avatar%>" alt="User profile image thumbnail" id="nAvatar">
+        <% } %>
       </div>
     </div>
     <div class="container"><%- body %></div>
