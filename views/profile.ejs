@@ -20,7 +20,11 @@
                 <% if (thisUser.UserId === user.UserId) { %>
                     <a href="users/editProfile" class="timbreButton profileButton">Edit Profile</a>
                 <% } else { %>
-                    <a href="/profile/follow/<%=thisUser.UserId%>" class="timbreButton profileButton">+ Follow</a>
+                    <% if (JSON.parse(user.Following).includes((thisUser.UserId).toString())) { %>
+                        <a href="/profile/unfollow/<%=thisUser.UserId%>" class="timbreButton profileButton">- Unfollow</a>
+                    <% } else { %>
+                        <a href="/profile/follow/<%=thisUser.UserId%>" class="timbreButton profileButton">+ Follow</a>
+                    <% } %>
                 <% } %>
             </div>
         </div>
