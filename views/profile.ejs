@@ -20,7 +20,7 @@
                 <% if (thisUser.UserId === user.UserId) { %>
                     <a href="users/editProfile" class="timbreButton profileButton">Edit Profile</a>
                 <% } else { %>
-                    <a href="users/editProfile" class="timbreButton profileButton">Follow</a>
+                    <a href="/profile/follow/<%=thisUser.UserId%>" class="timbreButton profileButton">+ Follow</a>
                 <% } %>
             </div>
         </div>
