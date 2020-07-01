@@ -11,13 +11,13 @@
             <div id="nameAndLocation">
                 <h1><%= user.Username %></h1>
                 <p>
-                    <%= user.City %>, 
-                    <span> <%= user.State %> </span>
+                    <%= user.City%>, 
+                    <span> <%= user.StateProv %> </span>
                     <span> <%= user.Country %> </span>
                 </p>
             </div>
             <div id="profileInteractBtn">
-                <a href="users/editProfile" class="timbreButton timbreButtonOverride loginRegButton">Edit Profile</a>
+                <a href="users/editProfile" class="timbreButton profileButton">Edit Profile</a>
             </div>
         </div>
         <div id="profileBio">
@@ -25,35 +25,35 @@
         </div>
         <div id="findMeOn">
             <% if (user.SpotifyProfUrl != null) { %>
-                <div id="profSpotifyLink">
+                <div id="profSpotifyLink" class="socialIconContainer">
                     <a href=" <%- user.SpotifyProfUrl %>" target="_blank">
                         <img src="../icons/spotify.png" class="socialIcon">
                     </a>
                 </div>
             <% } %>
             <% if (user.FacebookProfUrl != null) { %>
-                <div id="profFacebookLink">
+                <div id="profFacebookLink" class="socialIconContainer">
                     <a href=" <%- user.FacebookProfUrl %>" target="_blank">
                         <img src="../icons/facebook.png" class="socialIcon">
                     </a>
                 </div>
             <% } %>
             <% if (user.TwitterProfUrl != null) { %>
-                <div id="profTwitterLink">
+                <div id="profTwitterLink" class="socialIconContainer">
                     <a href=" <%- user.TwitterProfUrl %>" target="_blank">
                         <img src="../icons/twitter.png" class="socialIcon">
                     </a>
                 </div>
             <% } %>
             <% if (user.InstaProfUrl != null) { %>
-                <div id="profInstaLink">
+                <div id="profInstaLink" class="socialIconContainer">
                     <a href=" <%- user.InstaProfUrl %>" target="_blank">
                         <img src="../icons/instagram.png" class="socialIcon">
                     </a>
                 </div>
             <% } %>
             <% if (user.InstaProfUrl != null) { %>
-                <div id="profSoundcloudLink">
+                <div id="profSoundcloudLink" class="socialIconContainer">
                     <a href=" <%- user.SoundcloudProfUrl %>" target="_blank">
                         <img src="../icons/soundcloud.png" class="socialIcon">
                     </a>

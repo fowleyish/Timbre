@@ -109,4 +109,31 @@ router.post('/edit', (req, res) => {
     .catch(err => console.log(err));
 });
 
+router.get('/editProfile', (req, res) => {
+    res.render('editprofile', {
+        user: req.user
+    });
+});
+
+router.post('/editProfile', (req, res) => {
+    const profileUpdateInfo = {
+        City: req.body.city,
+        StateProv: req.body.state,
+        Country: req.body.country,
+        SpotifyProfUrl: req.body.spotifyUrl,
+        FacebookProfUrl: req.body.facebook,
+        TwitterProfUrl: req.body.twitter,
+        InstaProfUrl: req.body.instagram,
+        SoundcloudProfUrl: req.body.soundcloud,
+        ProfileBlurb: req.body.about,
+        Avatar: req.body.avatar
+    };
+    User.update(profileUpdateInfo, { where: { UserId: req.user.UserId } })
+    .then(user => {
+        console.log('User updated!');
+    })
+    .then(user => res.redirect('/profile'))
+    .catch(err => console.log(err));
+});
+
 module.exports = router;

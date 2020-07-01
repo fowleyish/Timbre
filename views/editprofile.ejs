@@ -1,0 +1,192 @@
+<div id="setupContainer">
+    <div class="setupHeader">
+        <h1 class="text-center mb-3">Hi, <%= user.Username %>!</h1>
+        <h3>Use the fields below to update your profile </h3>
+    </div>
+    <%- include('./partials/messages') %>
+    <form action="/users/editProfile" method="POST">
+        <div class="inputSection">
+            <div class="inputLabel">
+                <label for="city">City</label>
+            </div>
+            <div class="inputInput">
+                <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    class="timbreInputBox"
+                    placeholder="Enter your city"
+                    value=" <% if (user.City != null) { %>
+                        <%= user.City %>
+                    <% } %>
+                    "
+                >
+            </div>
+        </div>
+        <div class="inputSection">
+            <div class="inputLabel">
+                <label for="state">State</label>
+            </div>
+            <div class="inputInput">
+                <input
+                    type="text"
+                    id="state"
+                    name="state"
+                    class="timbreInputBox"
+                    placeholder="Enter your state or province"
+                    value=" <% if (user.State != null) { %>
+                        <%= user.State %>
+                    <% } %>
+                    "
+                >
+            </div>
+        </div>
+        <div class="inputSection">
+            <div class="inputLabel">
+                <label for="country">Country</label> 
+            </div>
+            <div class="inputInput">
+                <input
+                    type="text"
+                    id="country"
+                    name="country"
+                    class="timbreInputBox"
+                    placeholder="Enter your country of residence"
+                    value=" <% if (user.Country != null) { %>
+                        <%= user.Country %>
+                    <% } %>
+                    "
+                >
+            </div>
+        </div>
+        <h4> Find me on... </h4>
+        <div class="inputSection">
+            <div class="inputLabel">
+                <label for="spotifyUrl">Spotify</label>
+            </div>
+            <div class="inputInput">
+                <input
+                    type="text"
+                    id="spotifyUrl"
+                    name="spotifyUrl"
+                    class="timbreInputBox"
+                    placeholder="Enter your Spotify profile URL"
+                    value=" <% if (user.SpotifyProfUrl != null) { %>
+                        <%= user.SpotifyProfUrl %>
+                    <% } %>
+                    "
+                >
+            </div>
+        </div>
+        <div class="inputSection">
+            <div class="inputLabel">
+                <label for="facebook">Facebook</label>
+            </div>
+            <div class="inputInput">
+                <input
+                    type="text"
+                    id="facebook"
+                    name="facebook"
+                    class="timbreInputBox"
+                    placeholder="Enter your Facebook profile URL"
+                    value=" <% if (user.FacebookProfUrl != null) { %>
+                        <%= user.FacebookProfUrl %>
+                    <% } %>
+                    "
+                >
+            </div>
+        </div>
+        <div class="inputSection">
+            <div class="inputLabel">
+                <label for="twitter">Twitter</label>
+            </div>
+            <div class="inputInput">
+                <input
+                    type="text"
+                    id="twitter"
+                    name="twitter"
+                    class="timbreInputBox"
+                    placeholder="Enter your Twitter profile URL"
+                    value=" <% if (user.TwitterProfUrl != null) { %>
+                        <%= user.TwitterProfUrl %>
+                    <% } %>
+                    "
+                >
+            </div>
+        </div>
+        <div class="inputSection">
+            <div class="inputLabel">
+                <label for="instagram">Instagram profile</label>
+            </div>
+            <div class="inputInput">
+                <input
+                    type="text"
+                    id="instagram"
+                    name="instagram"
+                    class="timbreInputBox"
+                    placeholder="Enter your Instagram profile URL"
+                    value=" <% if (user.InstaProfUrl != null) { %>
+                        <%= user.InstaProfUrl %>
+                    <% } %>
+                    "
+                >
+            </div>
+        </div>
+        <div class="inputSection">
+            <div class="inputLabel">
+                <label for="soundcloud">Soundcloud profile</label>
+            </div>
+            <div class="inputInput">
+                <input
+                    type="text"
+                    id="soundcloud"
+                    name="soundcloud"
+                    class="timbreInputBox"
+                    placeholder="Enter your Soundcloud profile URL"
+                    value=" <% if (user.SoundcloudProfUrl != null) { %>
+                        <%= user.SoundcloudProfUrl %>
+                    <% } %>
+                    "
+                >
+            </div>
+        </div>
+        <h4>About me</h4>
+        <div class="inputSection">
+            <div class="inputLabel">
+                <label for="about">Max: 500 characters</label>
+            </div>
+            <div class="inputInput">
+                <input
+                    type="text"
+                    id="about"
+                    name="about"
+                    class="timbreInputBox"
+                    placeholder="Tell us about you!"
+                    value=" <% if (user.ProfileBlurb != null) { %>
+                        <%= user.ProfileBlurb %>
+                    <% } %>
+                    "
+                >
+            </div>
+        </div>
+        <div class="inputSection">
+            <div class="inputLabel">
+                <label for="avatar">Profile picture</label>
+            </div>
+            <div class="inputInput">
+                <input
+                    type="text"
+                    id="avatar"
+                    name="avatar"
+                    class="timbreInputBox"
+                    placeholder="Enter a URL to a profile picture"
+                    value=" <% if (user.Avatar != null) { %>
+                        <%= user.Avatar %>
+                    <% } %>
+                    "
+                >
+            </div>
+        </div>
+        <button type="submit" class="timbreButton timbreButtonOverride loginRegButton">Update profile</button>
+    </form>
+</div>

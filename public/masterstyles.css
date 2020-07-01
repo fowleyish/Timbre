@@ -12,9 +12,9 @@ body {
 
 .container {
     background-color: white;
-    width: 40%;
+    width: 60%;
     height: 90vh;
-    padding: 8px;
+    padding: 20px;
     -webkit-box-shadow: 0px 0px 11px -3px rgba(153,153,153,1);
     -moz-box-shadow: 0px 0px 11px -3px rgba(153,153,153,1);
     box-shadow: 0px 0px 11px -3px rgba(153,153,153,1);
@@ -228,4 +228,72 @@ body {
 
 #dashboardContent h2 {
     font-weight: 400;
+}
+
+/* Profile styles */
+
+#aboutInfo {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 80%;
+}
+
+#profileAvatar {
+    width: 30%;
+    margin-right: 15px;
+}
+
+#profileAvatar img {
+    width: 100%;
+}
+
+#profileTopfold {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+#nameAndLocation h1 {
+    line-height: 0;
+}
+
+#findMeOn {
+    display: flex;
+    flex-flow: row nowrap;
+    align-self: center;
+}
+
+.socialIconContainer {
+    width: 2vw;
+    margin-right: 1vw;
+}
+
+.socialIcon {
+    width: 100%;
+}
+
+#profileBio {
+    margin-top: -15px;
+}
+
+#profileAvatar img {
+    border-radius: 100%;
+}
+
+.profileButton {
+    padding: 10px;
+}
+
+#profileInteractBtn {
+    margin-top: 10px;
+}
+
+#profMusicContainer {
+    margin-top: 50px;
+    width:80%;
+}
+
+div#profileText {
+    display: flex;
+    flex-flow: column nowrap;
 }
