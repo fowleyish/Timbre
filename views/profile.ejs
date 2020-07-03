@@ -74,12 +74,20 @@
 <div id="profMusicContainer">
     <div id="top100Tab">
         <div id="top100ArtistsContainer">
-
+            <% const top100Artists = topArtists.data.items %>
+            <% for(let i=0; i<top100Artists.length; i++) { %>
+                <div class="singleTop100ArtistContainer">
+                    <a href="<%=top100Artists[i].external_urls.spotify%>" class="top100ArtistLink">
+                        <img src="<%=top100Artists[i].images[0].url%>" />
+                        <p> <%= top100Artists[i].name %> </p>
+                    </a>
+                </div>
+            <% } %>
         </div>
     </div>
     <div id="mutualInterestsTab">
         <div id="mutualInterestsContainer">
-
+            
         </div>
     </div>
 </div>

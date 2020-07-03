@@ -309,7 +309,44 @@ div#endNavItems {
     width:80%;
 }
 
-div#profileText {
+#profileText {
     display: flex;
     flex-flow: column nowrap;
+}
+
+#top100ArtistsContainer {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.top100ArtistLink img {
+    width: 100%;
+}
+
+.singleTop100ArtistContainer {
+    width: 18%;
+}
+
+.singleTop100ArtistContainer a {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+.top100ArtistLink p {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.top100ArtistLink {
+    text-decoration: none;
+    transition-duration: 0.4s;
+}
+
+.top100ArtistLink:hover {
+    -webkit-box-shadow: 2px 0px 5px -1px rgba(120,120,120,1);
+    -moz-box-shadow: 2px 0px 5px -1px rgba(120,120,120,1);
+    box-shadow: 2px 0px 5px -1px rgba(120,120,120,1);
+    transition-duration: 0.4s;
 }

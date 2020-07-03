@@ -3,20 +3,31 @@ const router = express.Router();
 const { ensureAuth } = require('../config/auth');
 const { parse } = require('path');
 const User = require('../models/index').user;
+const axios = require('axios');
 
-router.get('/:id', ensureAuth, (req, res) => {
-    User.findOne({
-        where: {
-            UserId: req.params.id
-        }
-    })
-    .then(targetUser => {
-        res.render('profile', {
-            user: req.user,
-            thisUser: targetUser
-        });
-    })
-    .catch(err => console.log(err));
+router.get('/:id', ensureAuth, async (req, res) => {
+    const [thisUser, topArtists] = await Promise.all([
+        User.findOne({
+            where: {
+                UserId: req.params.id
+            }
+        }),
+        axios({
+            url: 'https://api.spotify.com/v1/me/top/artists?limit=100&time_range=medium_term',
+            method: 'get',
+            headers: {
+                'Accept':'application/json',
+                'Content-Type':'application/json',
+                'Authorization':'Bearer BQAq6ItnOHN9yxy-GRzwtOZrDH6qhtrDQg6sStkiWLG8Or0kwB8inX7ZDzJzEq8-tEHDgQmTYt-AjE3Px5KNkixdoE0sHGhrIL5wDUhPoOH8PDdVp5Ts84hWt1R0B46U871lPP7WjvNWJ__jByBHHbyYErgLiX3k9ogOfPuGWn031Scu5Ly3Bvi2xrw18fIZnRafoqh599877kDT6EZ3vJyWWgSaWklvB3BaCerGvjm-7UvWsQSIa5GLTUgqVj8HHhDnFNdV3g'
+            }
+        })
+    ]);
+    
+    res.render('profile', {
+        user: req.user,
+        thisUser: thisUser,
+        topArtists: topArtists
+    });
 });
 
 router.get('/follow/:thisUserId', (req, res) => {
