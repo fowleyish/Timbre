@@ -18,7 +18,7 @@ router.get('/:id', ensureAuth, async (req, res) => {
             headers: {
                 'Accept':'application/json',
                 'Content-Type':'application/json',
-                'Authorization':'Bearer BQAq6ItnOHN9yxy-GRzwtOZrDH6qhtrDQg6sStkiWLG8Or0kwB8inX7ZDzJzEq8-tEHDgQmTYt-AjE3Px5KNkixdoE0sHGhrIL5wDUhPoOH8PDdVp5Ts84hWt1R0B46U871lPP7WjvNWJ__jByBHHbyYErgLiX3k9ogOfPuGWn031Scu5Ly3Bvi2xrw18fIZnRafoqh599877kDT6EZ3vJyWWgSaWklvB3BaCerGvjm-7UvWsQSIa5GLTUgqVj8HHhDnFNdV3g'
+                'Authorization':'Bearer ' + req.user.SpotifyToken
             }
         })
     ]);

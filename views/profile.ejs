@@ -72,6 +72,10 @@
 </div>
 
 <div id="profMusicContainer">
+    <div id="topArtistsTabLabels">
+        <div id="top100TabLabel" onclick="switchToTop()">Top 100 Artists</div>
+        <div id="mutualArtistsTabLabel" onclick="switchToMutual()">Mutual Artists</div>
+    </div>
     <div id="top100Tab">
         <div id="top100ArtistsContainer">
             <% const top100Artists = topArtists.data.items %>
@@ -87,7 +91,42 @@
     </div>
     <div id="mutualInterestsTab">
         <div id="mutualInterestsContainer">
-            
+            <% for(let i=0; i<top100Artists.length; i++) { %>
+                <div class="singleMutualInterestContainer">
+                    <a href="<%=top100Artists[i].external_urls.spotify%>" class="mutualArtistLink">
+                        <img src="<%=top100Artists[i].images[0].url%>" />
+                        <p> <%= top100Artists[i].name %> </p>
+                    </a>
+                </div>
+            <% } %>
         </div>
     </div>
 </div>
+
+<script>
+    function switchToMutual() {
+        const muTab = document.getElementById('mutualArtistsTabLabel');
+        const topTab = document.getElementById('top100TabLabel');
+        const muContent = document.getElementById('mutualInterestsContainer');
+        const topContent = document.getElementById('top100ArtistsContainer');
+        topContent.style.display = 'none';
+        muContent.style.display = 'flex';
+        topTab.style.fontWeight = 'normal';
+        topTab.style.color = 'black';
+        muTab.style.fontWeight = 'bold';
+        muTab.style.color = '#ff2ca3';
+    }
+
+    function switchToTop() {
+        const muTab = document.getElementById('mutualArtistsTabLabel');
+        const topTab = document.getElementById('top100TabLabel');
+        const muContent = document.getElementById('mutualInterestsContainer');
+        const topContent = document.getElementById('top100ArtistsContainer');
+        topContent.style.display = 'flex';
+        muContent.style.display = 'none';
+        topTab.style.fontWeight = 'bold';
+        topTab.style.color = '#ff2ca3';
+        muTab.style.fontWeight = 'normal';
+        muTab.style.color = 'black';
+    }
+</script>
