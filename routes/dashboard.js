@@ -3,6 +3,7 @@ const router = express.Router();
 const { ensureAuth } = require('../config/auth');
 const axios = require('axios');
 const User = require('../models/index').user;
+const validateToken = require('../config/refreshtoken');
 
 router.get('/', ensureAuth, async (req, res) => {
     if (req.user.SpotifyRefreshToken == null) {
@@ -25,6 +26,7 @@ router.get('/', ensureAuth, async (req, res) => {
             const resolvedFollowingList = await Promise.all(followingListPromises);
             let recentlyPlayedAll = [];
             for(let i=0; i<resolvedFollowingList.length; i++) {
+                await validateToken(resolvedFollowingList[i]._previousDataValues);
                 let thisRecentlyPlayed = axios({
                     url: 'https://api.spotify.com/v1/me/player/recently-played?limit=10',
                     method: 'get',

@@ -4,8 +4,10 @@ const { ensureAuth } = require('../config/auth');
 const { parse } = require('path');
 const User = require('../models/index').user;
 const axios = require('axios');
+const validateToken = require('../config/refreshtoken');
 
 router.get('/:id', ensureAuth, async (req, res) => {
+    await validateToken(req.user);
     const [thisUser, myTopArtists] = await Promise.all([
         User.findOne({
             where: {
@@ -22,7 +24,7 @@ router.get('/:id', ensureAuth, async (req, res) => {
             }
         })
     ]);
-
+    await validateToken(thisUser);
     const theirTopArtists = await Promise.all([
         axios({
             url: 'https://api.spotify.com/v1/me/top/artists?limit=100&time_range=medium_term',
