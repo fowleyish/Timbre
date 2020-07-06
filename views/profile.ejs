@@ -77,8 +77,10 @@
 
 <div id="profMusicContainer">
     <div id="topArtistsTabLabels">
-        <div id="top100TabLabel" onclick="switchToTop()">Top 100 Artists</div>
-        <div id="mutualArtistsTabLabel" onclick="switchToMutual()">Mutual Artists</div>
+        <div id="top100TabLabel" onclick="switchToTop()">Top Artists</div>
+        <% if (thisUser.UserId !== user.UserId) { %>
+            <div id="mutualArtistsTabLabel" onclick="switchToMutual()">Mutual Artists</div>
+        <% } %>
     </div>
     <div id="top100Tab">
         <div id="top100ArtistsContainer">

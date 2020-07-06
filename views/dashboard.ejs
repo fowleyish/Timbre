@@ -1,65 +1,86 @@
 <div id="dashboardContent">
   <div id="col1">
     <h2>Discover People</h2>
-    <div id="peopleContainer">
-      <% for(var item in peopleToDiscover) { %>
-        <% var person = peopleToDiscover[item] %>
-        <div class="discoverPersonContainer">
-          <a href="http://localhost:3000/profile/<%=person.UserId%>">
-            <div class="discoverPersonAvatar">
-              <img src="<%=person.Avatar%>" />
-            </div>
-            <div class="discoverPersonText">
-              <div class="discoverPersonUsername"><%=person.Username%></div>
-              <div class="discoverPersonLocation">
-                <%=person.City%>,
-                <%=person.StateProv%>
-                <%=person.Country%>
+      <% if (typeof peopleToDiscover != 'undefined') { %>
+      <div id="peopleContainer">
+        <% for(var item in peopleToDiscover) { %>
+          <% var person = peopleToDiscover[item] %>
+          <div class="discoverPersonContainer">
+            <a href="http://localhost:3000/profile/<%=person.UserId%>">
+              <div class="discoverPersonAvatar">
+                <img src="<%=person.Avatar%>" />
               </div>
-              <div class="discoverPersonBecauseYouBothLike">You both like <%=person.ArtistMatch%></div>
-            </div>
-          </a>
-        </div>
-      <% } %>
-    </div>
+              <div class="discoverPersonText">
+                <div class="discoverPersonUsername"><%=person.Username%></div>
+                <div class="discoverPersonLocation">
+                  <%=person.City%>,
+                  <%=person.StateProv%>
+                  <%=person.Country%>
+                </div>
+                <div class="discoverPersonBecauseYouBothLike">You both like <%=person.ArtistMatch%></div>
+              </div>
+            </a>
+          </div>
+        <% } %>
+      </div>
+    <% } else { %>
+      <div class="noContentPlaceholder">
+        <img src="../icons/shocked.png">
+        <div id="noFriends" class="emptyHelperText">You'll see some recommended follows here once you start up your network</div>
+      </div>
+    <% } %>
     <h2>Discover Artists</h2>
-    <div id="artistsContainer">
-      <% for(var single in artistsToDiscover) { %>
-        <% var artist = artistsToDiscover[single] %>
-        <div class="discoverArtistContainer">
-          <a href="<%=artist.ArtistLink%>" target="_blank">
-            <div class="discoverArtistImage">
-              <img src="<%=artist.ArtistArt%>" />
-            </div>
-            <div class="discoverArtistText">
-              <div class="discoverArtistName"><%=artist.ArtistName%></div>
-              <div class="discoverListenedToBy"><%=artist.ListenedToBy%> listens to this</div>
-              <div class="genresContainer">
-                <% for(let j=0; j<artist.Genres.length; j++) { %>
-                  <div class="genre"><%=artist.Genres[j]%></div>
-                <% } %>
+      <% if (typeof artistsToDiscover != 'undefined') { %>
+      <div id="artistsContainer">
+        <% for(var single in artistsToDiscover) { %>
+          <% var artist = artistsToDiscover[single] %>
+          <div class="discoverArtistContainer">
+            <a href="<%=artist.ArtistLink%>" target="_blank">
+              <div class="discoverArtistImage">
+                <img src="<%=artist.ArtistArt%>" />
               </div>
-            </div>
-          </a>
+              <div class="discoverArtistText">
+                <div class="discoverArtistName"><%=artist.ArtistName%></div>
+                <div class="discoverListenedToBy"><%=artist.ListenedToBy%> listens to this</div>
+                <div class="genresContainer">
+                  <% for(let j=0; j<artist.Genres.length; j++) { %>
+                    <div class="genre"><%=artist.Genres[j]%></div>
+                  <% } %>
+                </div>
+              </div>
+            </a>
+          </div>
+        <% } %>
+      </div>
+      <% } else { %>
+        <div class="noContentPlaceholder">
+          <img src="../icons/shocked.png">
+          <div id="noArtists" class="emptyHelperText">Follow users to get recommended artists</div>
         </div>
       <% } %>
-    </div>
   </div>
   <div id="col2">
     <h2>Feed</h2>
     <div id="feedContainer">
-      <% for(i=0; i<feed.length; i++) { %>
-        <div class="recentlyPlayedTrack">
-          <a href="<%=feed[i].track.external_urls.spotify%>">
-            <div class="recentlyPlayedImageContainer">
-              <img src="<%=feed[i].track.album.images[0].url%>" />
-            </div>
-            <div class="recentlyPlayedTextInfo">
-              <div class="rPTrackName"><%=feed[i].track.name%></div>
-              <div class="rPTrackArtist"><%=feed[i].track.artists[0].name%></div>
-              <div class="rPTrackAlbum"><%=feed[i].track.album.name%></div>
-            </div>
-          </a>
+      <% if (typeof feed != 'undefined') { %>
+        <% for(i=0; i<feed.length; i++) { %>
+          <div class="recentlyPlayedTrack">
+            <a href="<%=feed[i].track.external_urls.spotify%>">
+              <div class="recentlyPlayedImageContainer">
+                <img src="<%=feed[i].track.album.images[0].url%>" />
+              </div>
+              <div class="recentlyPlayedTextInfo">
+                <div class="rPTrackName"><%=feed[i].track.name%></div>
+                <div class="rPTrackArtist"><%=feed[i].track.artists[0].name%></div>
+                <div class="rPTrackAlbum"><%=feed[i].track.album.name%></div>
+              </div>
+            </a>
+          </div>
+        <% } %>
+      <% } else { %>
+        <div class="noContentPlaceholder">
+          <img src="../icons/shocked.png">
+          <div id="noFeed" class="emptyHelperText">Follow users to see what they're listening to here</div>
         </div>
       <% } %>
     </div>
