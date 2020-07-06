@@ -379,3 +379,56 @@ div#endNavItems {
     overflow-y: scroll;
     justify-content: space-around;
 }
+
+/* Dashboard feed styles */
+
+#feedContainer {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+.recentlyPlayedTrack a {
+    display: flex;
+    flex-flow: row nowrap;
+    color: black;
+    text-decoration: none;
+    transition-duration: 0.4s;
+    padding: 5px;
+}
+
+.recentlyPlayedImageContainer {
+    width: 15%;
+}
+
+.recentlyPlayedImageContainer img {
+    width: 100%;
+}
+
+.recentlyPlayedTextInfo {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-left: 10px;
+    line-height: 1.5em;
+}
+
+.rPTrackName {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.rPTrackAlbum {
+    color: gray;
+}
+
+.recentlyPlayedTrack a:hover {
+    -webkit-box-shadow: 2px 0px 5px -1px rgba(120,120,120,1);
+    -moz-box-shadow: 2px 0px 5px -1px rgba(120,120,120,1);
+    box-shadow: 2px 0px 5px -1px rgba(120,120,120,1);
+    transition-duration: 0.4s;
+}
+
+.recentlyPlayedTrack {
+    margin: 5px;
+}

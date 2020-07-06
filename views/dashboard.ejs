@@ -12,7 +12,20 @@
   <div id="col2">
     <h2>Feed</h2>
     <div id="feedContainer">
-
+      <% for(i=0; i<feed.length; i++) { %>
+        <div class="recentlyPlayedTrack">
+          <a href="<%=feed[i].track.external_urls.spotify%>">
+            <div class="recentlyPlayedImageContainer">
+              <img src="<%=feed[i].track.album.images[0].url%>" />
+            </div>
+            <div class="recentlyPlayedTextInfo">
+              <div class="rPTrackName"><%=feed[i].track.name%></div>
+              <div class="rPTrackArtist"><%=feed[i].track.artists[0].name%></div>
+              <div class="rPTrackAlbum"><%=feed[i].track.album.name%></div>
+            </div>
+          </a>
+        </div>
+      <% } %>
     </div>
   </div>
 </div>
