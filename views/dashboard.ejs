@@ -24,7 +24,25 @@
     </div>
     <h2>Discover Artists</h2>
     <div id="artistsContainer">
-
+      <% for(var single in artistsToDiscover) { %>
+        <% var artist = artistsToDiscover[single] %>
+        <div class="discoverArtistContainer">
+          <a href="<%=artist.ArtistLink%>" target="_blank">
+            <div class="discoverArtistImage">
+              <img src="<%=artist.ArtistArt%>" />
+            </div>
+            <div class="discoverArtistText">
+              <div class="discoverArtistName"><%=artist.ArtistName%></div>
+              <div class="discoverListenedToBy"><%=artist.ListenedToBy%> listens to this</div>
+              <div class="genresContainer">
+                <% for(let j=0; j<artist.Genres.length; j++) { %>
+                  <div class="genre"><%=artist.Genres[j]%></div>
+                <% } %>
+              </div>
+            </div>
+          </a>
+        </div>
+      <% } %>
     </div>
   </div>
   <div id="col2">

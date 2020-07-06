@@ -101,11 +101,44 @@ router.get('/', ensureAuth, async (req, res) => {
                 }
             }
 
+            let recommendedArtists = [];
+            for(let i=0; i<resolvedFollowingList.length; i++) {
+                const followingTop5Artists = await axios({
+                    url: 'https://api.spotify.com/v1/me/top/artists?limit=5&time_range=medium_term',
+                    method: 'get',
+                    headers: {
+                        'Accept':'application/json',
+                        'Content-Type':'application/json',
+                        'Authorization':'Bearer ' + resolvedFollowingList[i]._previousDataValues.SpotifyToken
+                    }
+                })
+                for(let j=0; j<followingTop5Artists.data.items.length; j++) {
+                    for(let k=0; k<myTop10Artists.data.items.length; k++) {
+                        if (followingTop5Artists.data.items[j].id !== myTop10Artists.data.items[k].id) {
+                            let newArtistToDiscover = {
+                                ArtistArt: followingTop5Artists.data.items[j].images[0].url,
+                                ArtistName: followingTop5Artists.data.items[j].name,
+                                ArtistLink: followingTop5Artists.data.items[j].external_urls.spotify,
+                                Genres: followingTop5Artists.data.items[j].genres,
+                                ListenedToBy: resolvedFollowingList[i].Username
+                            }
+                            recommendedArtists.push(newArtistToDiscover);
+                        }
+                    }
+                }
+            }
+
+            let uniqueArtistsDict = {};
+            for(let i=0; i<recommendedArtists.length; i++) {
+                uniqueArtistsDict[recommendedArtists[i].ArtistName] = recommendedArtists[i];
+            }
+
             res.render('dashboard', {
                 user: req.user,
                 following: resolvedFollowingList,
                 feed: recentlyPlayedTotal,
-                peopleToDiscover: uniqueUserMatchDict
+                peopleToDiscover: uniqueUserMatchDict,
+                artistsToDiscover: uniqueArtistsDict
             });
         } else {
             res.render('dashboard', {
