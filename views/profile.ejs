@@ -20,8 +20,12 @@
                 <% if (thisUser.UserId === user.UserId) { %>
                     <a href="users/editProfile" class="timbreButton profileButton">Edit Profile</a>
                 <% } else { %>
-                    <% if (JSON.parse(user.Following).includes((thisUser.UserId).toString())) { %>
-                        <a href="/profile/unfollow/<%=thisUser.UserId%>" class="timbreButton profileButton">- Unfollow</a>
+                    <% if (user.Following !== null) { %>
+                        <% if (JSON.parse(user.Following).includes((thisUser.UserId).toString())) { %>
+                            <a href="/profile/unfollow/<%=thisUser.UserId%>" class="timbreButton profileButton">- Unfollow</a>
+                        <% } else { %>
+                            <a href="/profile/follow/<%=thisUser.UserId%>" class="timbreButton profileButton">+ Follow</a>
+                        <% } %>
                     <% } else { %>
                         <a href="/profile/follow/<%=thisUser.UserId%>" class="timbreButton profileButton">+ Follow</a>
                     <% } %>
@@ -78,7 +82,7 @@
     </div>
     <div id="top100Tab">
         <div id="top100ArtistsContainer">
-            <% const top100Artists = topArtists.data.items %>
+            <% const top100Artists = topArtists[0].data.items %>
             <% for(let i=0; i<top100Artists.length; i++) { %>
                 <div class="singleTop100ArtistContainer">
                     <a href="<%=top100Artists[i].external_urls.spotify%>" class="top100ArtistLink">
@@ -91,11 +95,11 @@
     </div>
     <div id="mutualInterestsTab">
         <div id="mutualInterestsContainer">
-            <% for(let i=0; i<top100Artists.length; i++) { %>
+            <% for(let i=0; i<mutualArtists.length; i++) { %>
                 <div class="singleMutualInterestContainer">
-                    <a href="<%=top100Artists[i].external_urls.spotify%>" class="mutualArtistLink">
-                        <img src="<%=top100Artists[i].images[0].url%>" />
-                        <p> <%= top100Artists[i].name %> </p>
+                    <a href="<%=mutualArtists[i].external_urls.spotify%>" class="mutualArtistLink">
+                        <img src="<%=mutualArtists[i].images[0].url%>" />
+                        <p> <%= mutualArtists[i].name %> </p>
                     </a>
                 </div>
             <% } %>

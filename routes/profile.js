@@ -6,7 +6,7 @@ const User = require('../models/index').user;
 const axios = require('axios');
 
 router.get('/:id', ensureAuth, async (req, res) => {
-    const [thisUser, topArtists] = await Promise.all([
+    const [thisUser, myTopArtists] = await Promise.all([
         User.findOne({
             where: {
                 UserId: req.params.id
@@ -22,11 +22,35 @@ router.get('/:id', ensureAuth, async (req, res) => {
             }
         })
     ]);
-    
+
+    const theirTopArtists = await Promise.all([
+        axios({
+            url: 'https://api.spotify.com/v1/me/top/artists?limit=100&time_range=medium_term',
+            method: 'get',
+            headers: {
+                'Accept':'application/json',
+                'Content-Type':'application/json',
+                'Authorization':'Bearer ' + thisUser.SpotifyToken
+            }
+        })
+    ]);
+
+    const myTop100 = myTopArtists.data.items;
+    const theirTop100 = theirTopArtists[0].data.items;
+    let mutualArtists = [];
+    for(let i=0; i<myTop100.length; i++) {
+        for(let j=0; j<theirTop100.length; j++) {
+            if (myTop100[i].id === theirTop100[j].id) {
+                mutualArtists.push(myTop100[i]);
+            }
+        }
+    }
+
     res.render('profile', {
         user: req.user,
-        thisUser: thisUser,
-        topArtists: topArtists
+        thisUser: thisUser._previousDataValues,
+        topArtists: theirTopArtists,
+        mutualArtists: mutualArtists
     });
 });
 
