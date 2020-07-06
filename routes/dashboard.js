@@ -13,6 +13,13 @@ router.get('/', ensureAuth, async (req, res) => {
         })
     } else {
         if (req.user.Following !== null) {
+            const allTimbreUsers = await User.findAll();
+            allTimbreUsers.forEach(async el => {
+                if (el._previousDataValues.SpotifyRefreshToken !== null) {
+                    await validateToken(el._previousDataValues);
+                }
+            });
+
             const followingList = JSON.parse(req.user.Following);
             let followingListPromises = [];
             for(let i=0; i<followingList.length; i++) {
