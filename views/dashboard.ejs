@@ -2,11 +2,29 @@
   <div id="col1">
     <h2>Discover People</h2>
     <div id="peopleContainer">
-
+      <% for(var item in peopleToDiscover) { %>
+        <% var person = peopleToDiscover[item] %>
+        <div class="discoverPersonContainer">
+          <a href="http://localhost:3000/profile/<%=person.UserId%>">
+            <div class="discoverPersonAvatar">
+              <img src="<%=person.Avatar%>" />
+            </div>
+            <div class="discoverPersonText">
+              <div class="discoverPersonUsername"><%=person.Username%></div>
+              <div class="discoverPersonLocation">
+                <%=person.City%>,
+                <%=person.StateProv%>
+                <%=person.Country%>
+              </div>
+              <div class="discoverPersonBecauseYouBothLike">You both like <%=person.ArtistMatch%></div>
+            </div>
+          </a>
+        </div>
+      <% } %>
     </div>
     <h2>Discover Artists</h2>
     <div id="artistsContainer">
-      
+
     </div>
   </div>
   <div id="col2">

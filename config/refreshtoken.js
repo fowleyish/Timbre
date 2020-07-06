@@ -24,7 +24,10 @@ module.exports = async (user) => {
                 }
             })
             console.log(refreshAuth);
-            await User.update({ SpotifyToken: refreshAuth.data.access_token }, { where: { UserId: user.UserId } })
+            var updateUser = await User.update({ SpotifyToken: refreshAuth.data.access_token }, { where: { UserId: user.UserId } })
+            .then((response) => {
+                console.log('User token updated!' + user.SpotifyToken)
+            })
         } catch (err) {
             console.log(err);
         }

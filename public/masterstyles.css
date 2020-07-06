@@ -400,6 +400,7 @@ div#endNavItems {
 
 .recentlyPlayedImageContainer {
     width: 15%;
+    display: flex;
 }
 
 .recentlyPlayedImageContainer img {
@@ -431,4 +432,51 @@ div#endNavItems {
 
 .recentlyPlayedTrack {
     margin: 5px;
+}
+
+/* Dashboard discover people styles */
+
+.discoverPersonContainer a {
+    display: flex;
+    flex-flow: row nowrap;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+}
+
+.discoverPersonAvatar {
+    width: 20%;
+    display: flex;
+}
+
+.discoverPersonAvatar img {
+    width: 100%;
+    border-radius: 100%;
+}
+
+.discoverPersonText {
+    margin-left: 10px;
+    line-height: 1.4em;
+}
+
+.discoverPersonUsername {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.discoverPersonBecauseYouBothLike {
+    font-size: 0.9em;
+    color: gray;
+}
+
+.discoverPersonContainer {
+    padding: 6px;
+}
+
+.discoverPersonContainer a:hover {
+    -webkit-box-shadow: 2px 0px 5px -1px rgba(120,120,120,1);
+    -moz-box-shadow: 2px 0px 5px -1px rgba(120,120,120,1);
+    box-shadow: 2px 0px 5px -1px rgba(120,120,120,1);
+    transition-duration: 0.4s;
 }
