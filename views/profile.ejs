@@ -18,7 +18,7 @@
             </div>
             <div id="profileInteractBtn">
                 <% if (thisUser.UserId === user.UserId) { %>
-                    <a href="users/editProfile" class="timbreButton profileButton">Edit Profile</a>
+                    <a href="/users/editProfile" class="timbreButton profileButton">Edit Profile</a>
                 <% } else { %>
                     <% if (user.Following !== null) { %>
                         <% if (JSON.parse(user.Following).includes((thisUser.UserId).toString())) { %>
