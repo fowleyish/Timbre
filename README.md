@@ -8,6 +8,8 @@ Timbre is a web application I built as my final project with devCodeCamp, a 12-w
 
 As a huge music fan and someone passionate about discovering new music, I wanted to emulate other fan-made music-discovery applications I’ve found throughout the years including [Discover Quickly](https://discoverquickly.com/) and [Every Noise](http://everynoise.com/), but add a social spin on it to introduce a sense of community to help curious minds connect. Presently, the application has a handful of bugs and more than a few areas that could use some code optimization, but it’s my hope to have this publicly hosted at some point to give music lovers (including myself) a new avenue to discover new music.
 
+### Watch my demo of Timbre [here](https://www.youtube.com/watch?v=dYSMO1NuO_8&t=14s)
+
 # How does it work?
 Timbre uses the following tech stack:
 - Node and Express.js for runtime
